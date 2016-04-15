@@ -1,0 +1,98 @@
+127.0.0.1
+
+[loadbalancers]
+lb1
+lb2
+
+[test]
+app1
+web1
+rdo1
+lb1
+
+<<<<<<< HEAD
+=======
+[jenkins]
+web4
+
+[rundeck]
+web3
+
+>>>>>>> 20600483ded1fc0074498eb9f2a21d4bfdb9a0ba
+[webservers]
+web1
+web2
+
+[wordpress]
+web1
+
+<<<<<<< HEAD
+[docker]
+docker1
+docker2
+=======
+[elasticsearch:children]
+webservers
+appservers
+>>>>>>> 20600483ded1fc0074498eb9f2a21d4bfdb9a0ba
+
+[appservers]
+app1
+app2
+<<<<<<< HEAD
+=======
+app3
+app4
+>>>>>>> 20600483ded1fc0074498eb9f2a21d4bfdb9a0ba
+
+[development]
+dev1
+dev2
+<<<<<<< HEAD
+=======
+dev3
+dev4
+>>>>>>> 20600483ded1fc0074498eb9f2a21d4bfdb9a0ba
+
+[databases]
+db1
+
+[production:children]
+webservers
+appservers
+databases
+loadbalancers
+
+<<<<<<< HEAD
+[local]
+localhost
+
+[all:vars]
+ansible_ssh_user=vagrant
+=======
+[openstack]
+rdo1
+rdo2
+rdo3
+rdo4
+
+[rdo]
+openstack
+
+[ubuntu]
+localhost
+web1
+web2
+web3
+web4
+
+[centos]
+app1
+app2
+app3
+app4
+
+[local]
+localhost
+>>>>>>> 20600483ded1fc0074498eb9f2a21d4bfdb9a0ba
+
