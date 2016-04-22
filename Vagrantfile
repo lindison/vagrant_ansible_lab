@@ -8,13 +8,27 @@ Vagrant.configure("2") do |config|
   (1..1).each do |i|
     config.vm.define "lb#{i}" do |lb|
         lb.vm.box="ubuntu/wily64"
-        lb.vm.hostname = "web#{i}"
+        lb.vm.hostname = "lb#{i}"
         lb.vm.network :private_network, ip: "192.168.33.2#{i}"
         lb.vm.network "forwarded_port", guest: 80, host: "622#{i}"
         lb.vm.network "forwarded_port", guest: 443, host: "623#{i}"
         lb.vm.network "forwarded_port", guest: 8888, host: "624#{i}"
         lb.vm.provider "virtualbox" do |vb|
           vb.memory = "512"
+        end
+    end
+  end
+
+  # Create an Ubunut Trusty Box
+  # HDD UUID: 99367400-1ede-417e-a189-a27ce1804f88
+  (1..1).each do |i|
+    config.vm.define "trusty#{i}" do |trusty|
+        trusty.vm.box="ubuntu/trusty64"
+        trusty.vm.hostname = "trusty#{i}"
+        trusty.vm.network :private_network, ip: "192.168.33.9#{i}"
+        trusty.vm.network "forwarded_port", guest: 80, host: "522#{i}"
+        trusty.vm.provider "virtualbox" do |vb|
+          vb.memory = "1024"
         end
     end
   end

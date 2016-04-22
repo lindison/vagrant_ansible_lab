@@ -1,0 +1,4 @@
+[web]
+web01 ansible_host=192.168.33.21 ansible_ssh_user=vagrant ansible_ssh_pass=vagrant
+[db]
+db01 ansible_host=192.168.33.50 ansible_ssh_user=vagrant ansible_ssh_pass=vagrant
