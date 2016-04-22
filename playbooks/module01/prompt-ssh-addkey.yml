@@ -6,9 +6,16 @@
   gather_facts: no
   remote_user: vagrant
   connection: ssh
+  vars_prompt:
+   - name: "add_or_remove"
+     prompt: "Add or Remove a Key?"
+     private: no
+   - name: "ssh_user"
+     prompt: "Which remote user?"
+     private: no
   tasks:
 
   - name: install ssh key
-    authorized_key: user=vagrant
+    authorized_key: user={{ ssh_user }}
                     key="{{lookup('file', '/home/vagrant/.ssh/id_rsa.pub') }}"
-                    state=present
+                    state={{ add_or_remove }}
