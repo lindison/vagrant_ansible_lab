@@ -6,16 +6,17 @@ Simple, run: vagrant up
 
 This will build you:
 
-11 x Ubuntu servers
-web1 / web2
-dev1 / dev2
-lb1 / lb2
-docker1 / docker2
-db1 / db2
+8 x Ubuntu servers
+web01 / web02
+dev01 / dev02
+lb01
+docker01
+db01
 acs
 
-2 x CentOs7 servers
-app1 / app2
+2 x CentOS servers
+app01
+app02
 
 This will install Ansible
 Populate the Ansible host file

@@ -1,10 +1,10 @@
 127.0.0.1
-web1
-web2
-app1
-lb1
-dev1
-db1
+web01
+web02
+app01
+lb01
+dev01
+db01
 localhost
 acs
-docker1
+docker01

@@ -1,5 +1,6 @@
 --- # Playbook demonstration and use of the authorize_key module
     # link: http://docs.ansible.com/ansible/authorized_key_module.html
+    # link: http://docs.ansible.com/ansible/debug_module.html
     # This playbook adds the SSH authorized key for particular user accounts
 
 - hosts: all
@@ -8,14 +9,19 @@
   connection: ssh
   vars_prompt:
    - name: "add_or_remove"
-     prompt: "Add or Remove a Key?"
+     prompt: "ssh key state? 'absent' or 'present'?"
      private: no
    - name: "ssh_user"
      prompt: "Which remote user?"
      private: no
+   - name: "ssh_user_pass"
+     prompt: "remote user's password?"
+     private: yes
+     encrypt: "sha512_crypt"
+     confirm: yes
+     salt_size: 7
   tasks:
-
-  - name: install ssh key
+  - name: Setting ssh_key to state '{{ssh_key_state}}' for user '{{ssh_user}}'.
     authorized_key: user={{ ssh_user }}
                     key="{{lookup('file', '/home/vagrant/.ssh/id_rsa.pub') }}"
                     state={{ add_or_remove }}

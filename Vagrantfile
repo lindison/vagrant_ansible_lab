@@ -6,7 +6,7 @@
 Vagrant.configure("2") do |config|
   # Create some load balancers
   (1..1).each do |i|
-    config.vm.define "lb#{i}" do |lb|
+    config.vm.define "lb0#{i}" do |lb|
         lb.vm.box="ubuntu/wily64"
         lb.vm.hostname = "lb#{i}"
         lb.vm.network :private_network, ip: "192.168.33.2#{i}"
@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
   # Create an Ubunut Trusty Box
   # HDD UUID: 99367400-1ede-417e-a189-a27ce1804f88
   (1..1).each do |i|
-    config.vm.define "trusty#{i}" do |trusty|
+    config.vm.define "trusty0#{i}" do |trusty|
         trusty.vm.box="ubuntu/trusty64"
         trusty.vm.hostname = "trusty#{i}"
         trusty.vm.network :private_network, ip: "192.168.33.9#{i}"
@@ -35,7 +35,7 @@ Vagrant.configure("2") do |config|
 
   # Create some web servers
   (1..2).each do |i|
-    config.vm.define "web#{i}" do |web|
+    config.vm.define "web0#{i}" do |web|
         web.vm.box="ubuntu/wily64"
         web.vm.hostname = "web#{i}"
         web.vm.network :private_network, ip: "192.168.33.3#{i}"
@@ -48,7 +48,7 @@ Vagrant.configure("2") do |config|
 
   # Create some Docker servers
   (1..1).each do |i|
-    config.vm.define "docker#{i}" do |node|
+    config.vm.define "docker0#{i}" do |node|
         node.vm.box="ubuntu/wily64"
         node.vm.hostname = "docker#{i}"
         node.vm.network :private_network, ip: "192.168.33.4#{i}"
@@ -61,7 +61,7 @@ Vagrant.configure("2") do |config|
 
   # Create some dev servers
   (1..1).each do |i|
-    config.vm.define "dev#{i}" do |dev|
+    config.vm.define "dev0#{i}" do |dev|
         dev.vm.box="ubuntu/wily64"
         dev.vm.hostname = "dev#{i}"
         dev.vm.network :private_network, ip: "192.168.33.5#{i}"
@@ -74,7 +74,7 @@ Vagrant.configure("2") do |config|
 
   # Create some app servers
   (1..1).each do |i|
-    config.vm.define "app#{i}" do |app|
+    config.vm.define "app0#{i}" do |app|
         app.vm.box="russmckendrick/centos7"
         app.vm.hostname = "app#{i}"
         app.vm.network :private_network, ip: "192.168.33.6#{i}"
@@ -88,7 +88,7 @@ Vagrant.configure("2") do |config|
 
   # Create some db servers
   (1..1).each do |i|
-    config.vm.define "db#{i}" do |db|
+    config.vm.define "db0#{i}" do |db|
         db.vm.box="ubuntu/wily64"
         db.vm.hostname = "db#{i}"
         db.vm.network :private_network, ip: "192.168.33.7#{i}"
