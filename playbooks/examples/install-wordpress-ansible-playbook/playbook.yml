@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: wordpress_app
   gather_facts: True
   vars:
     wp_mysql_db: MyWP
@@ -8,7 +8,7 @@
     mysql_root_user: root
     mysql_root_password: Solinea
 
-- hosts: db
+- hosts: wordpress_db
   remote_user: vagrant
   become: yes
   become_method: sudo
@@ -73,7 +73,7 @@
     - name: Ensure MariaDB is running (and enable it at boot)
       service: name=mysql state=restarted enabled=yes
 
-- hosts: web
+- hosts: wordpress-app
   remote_user: vagrant
   become: yes
   become_method: sudo

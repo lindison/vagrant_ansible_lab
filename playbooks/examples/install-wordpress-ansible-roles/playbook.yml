@@ -3,9 +3,10 @@
 #- include: droplets.yml
 
 # Common tasks
-- hosts: all
+- hosts: wordpress_roles
   gather_facts: True
-  sudo: yes
+  become: yes
+  become_method: sudo
   roles:
     - { role: common, tags: ["common"] }
     - { role: openssh, tags: ["openssh"] }
@@ -14,30 +15,34 @@
 #    - { role: iptables, tags: ["iptables"] }
 
 # Load Balancer(s) roles
-- hosts: lbs
-  sudo: yes
+- hosts: wordpress_lb_roles
+  become: yes
+  become_method: sudo
   roles:
     - { role: haproxy, tags: ["haproxy"] }
 
 # Application Server(s) roles
-- hosts: apps
-  sudo: yes
+- hosts: wordpress_app_roles
+  become: yes
+  become_method: sudo
   roles:
     - { role: nginx, tags: ["nginx"] }
     - { role: php5, tags: ["php5"] }
     - { role: hhvm, tags: ["hhvm"] }
 
 # Database Server(s) roles
-- hosts: dbs
-  sudo: yes
+- hosts: wordpress_db_roles
+  become: yes
+  become_method: sudo
   vars_files:
       - group_vars/passwords.yml
   roles:
     - { role: mysql, tags: ["mysql"] }
 
 # Installing the application on servers
-- hosts: all
-  sudo: yes
+- hosts: wordpress_roles
+  become: yes
+  become_method: sudo
   vars_files:
       - group_vars/passwords.yml
   handlers:

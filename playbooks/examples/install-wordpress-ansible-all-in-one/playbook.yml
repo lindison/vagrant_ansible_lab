@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: wordpress_dev
   vars:
     wp_mysql_db: MyWP
     wp_mysql_user: wpUser
