@@ -4,12 +4,29 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
+  # Create some OpenStack Servers
+  (1..5).each do |i|
+    config.vm.define "OpenStack0#{i}" do |lb|
+        lb.vm.box ="ubuntu/wily64"
+        lb.vm.hostname = "OpenStack0#{i}"
+        lb.vm.network :private_network, ip: "192.168.33.2#{i}"
+        lb.vm.network "public_network", bridge: "enp6s0"
+        lb.vm.network "forwarded_port", guest: 80, host: "922#{i}"
+        lb.vm.network "forwarded_port", guest: 443, host: "923#{i}"
+        lb.vm.network "forwarded_port", guest: 8888, host: "924#{i}"
+        lb.vm.provider "virtualbox" do |vb|
+          vb.memory = "2048"
+        end
+    end
+  end
+
   # Create some load balancers
-  (1..1).each do |i|
+  (1..4).each do |i|
     config.vm.define "lb0#{i}" do |lb|
         lb.vm.box="ubuntu/trusty64"
         lb.vm.hostname = "lb0#{i}"
         lb.vm.network :private_network, ip: "192.168.33.2#{i}"
+        lb.vm.network "public_network", bridge: "enp6s0"
         lb.vm.network "forwarded_port", guest: 80, host: "622#{i}"
         lb.vm.network "forwarded_port", guest: 443, host: "623#{i}"
         lb.vm.network "forwarded_port", guest: 8888, host: "624#{i}"
@@ -18,6 +35,7 @@ Vagrant.configure("2") do |config|
         end
     end
   end
+
 
   # Create some web servers
   (1..3).each do |i|
@@ -33,12 +51,12 @@ Vagrant.configure("2") do |config|
   end
 
   # Create some Docker servers
-  (1..6).each do |i|
+  (1..4).each do |i|
     config.vm.define "docker0#{i}" do |node|
         node.vm.box="ubuntu/wily64"
         node.vm.hostname = "docker0#{i}"
         node.vm.network :private_network, ip: "192.168.33.4#{i}"
-        node.vm.network "forwarded_port", guest: 80, host: "644#{i}"
+        node.vm.network "public_network", bridge: "enp6s0"
         node.vm.provider "virtualbox" do |vb|
           vb.memory = "2048"
         end
