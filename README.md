@@ -14,10 +14,6 @@ docker01
 db01
 acs
 
-2 x CentOS servers
-app01
-app02
-
 This will install Ansible
 Populate the Ansible host file
 This will also populate the /etc/hosts file with IPs (192.168.33.x network). 
