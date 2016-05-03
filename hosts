@@ -1,7 +1,11 @@
 [wordpress_lb_roles]
 lb01
 
-[wordpress_aio]
+[wordpress_playbook]
+web01
+db01
+
+[wordpress_app]
 web01
 
 [wordpress_dev]
