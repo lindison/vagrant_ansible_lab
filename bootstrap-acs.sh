@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 
 # install ansible (http://docs.ansible.com/intro_installation.html)
-apt-get -y install software-properties-common
-apt-add-repository -y ppa:ansible/ansible
-apt-get update
-apt-get -y install ansible
-apt-get -y install tree
+# apt-get -y install software-properties-common
+# apt-add-repository -y ppa:ansible/ansible
+# apt-get update
+# apt-get -y install ansible
+# apt-get -y install tree
 apt-get -y install python-passlib
+
+# route add default gw 192.168.1.1
+
 
 # copy examples into /home/vagrant (from inside the mgmt node)
 cp -a /vagrant/* /home/vagrant
@@ -35,11 +38,8 @@ cat >> /etc/hosts <<EOL
 192.168.1.143 web03
 192.168.1.151 docker01
 192.168.1.161 dev01
-192.168.1.171 app01
-192.168.1.181 db01
-192.168.1.182 db02
+192.168.1.171 db01
+192.168.1.172 db02
 
 EOL
 
-ssh-keyscan $(cat names) > /home/vagrant/.ssh/known_hosts
-chown vagrant:vagrant /home/vagrant/.ssh/known_hosts
