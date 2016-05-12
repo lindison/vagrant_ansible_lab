@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 # install ansible (http://docs.ansible.com/intro_installation.html)
-# apt-get -y install software-properties-common
-# apt-add-repository -y ppa:ansible/ansible
-# apt-get update
-# apt-get -y install ansible
-# apt-get -y install tree
+apt-get -y install software-properties-common
+apt-add-repository -y ppa:ansible/ansible
+apt-get update
+apt-get -y install ansible
+apt-get -y install tree
 apt-get -y install python-passlib
 
 # route add default gw 192.168.1.1
