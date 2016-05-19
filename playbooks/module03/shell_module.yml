@@ -1,6 +1,7 @@
---- # demonstration of the shell module
+--- 
+    # demonstration of the shell module
     # link: http://docs.ansible.com/ansible/shell_module.html
-- hosts: appservers
+- hosts: all
   remote_user: vagrant
   become: yes
   become_method: sudo
