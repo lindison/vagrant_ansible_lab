@@ -1,6 +1,7 @@
 db01
 db02
 dev01
+docker01
 lb01
 localhost
 web01
