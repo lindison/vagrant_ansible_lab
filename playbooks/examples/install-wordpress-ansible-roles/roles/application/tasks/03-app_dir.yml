@@ -1,4 +1,0 @@
----
-
-- name: create document root for the application
-  file: path={{ app_dir }} state=directory owner={{ app_user }} group={{ app_user }} recurse=yes

@@ -1,6 +1,0 @@
-# Iptables variables
-incoming:
-  - name: SSH
-    port: 22
-
-backup_dbs: True
