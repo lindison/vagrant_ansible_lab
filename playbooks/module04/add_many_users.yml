@@ -13,5 +13,5 @@
     user: name={{ item }} shell=/bin/bash comment="cicd users" group=cicd
     with_items:
       - jenkins
-      - ansible
       - rundeck
+      - puppet
